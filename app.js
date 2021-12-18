@@ -28,10 +28,10 @@ const PORT = process.env.PORT || 80;
 app.use("/auth", authHandler);
 
 // public routes
-app.use("/", publicRoutes);
+app.use("/public", publicRoutes);
 
 // private routes
-app.use("/", _authUser, privateRoutes);
+app.use("/private", _authUser, privateRoutes);
 
 // welcome message for base route
 app.use("/", (res) => {
