@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+
+// load dotenv before database connection else MONGO_PROD_URL will be undefined
 dotenv.config();
 const connect = require("./connect");
 const { MODE } = require("./helper");
@@ -38,6 +40,16 @@ app.use("/", (req, res, next) => {
 	return res.send({
 		message: "api is running",
 		mode: MODE,
+	});
+});
+
+// Assume 404 since no middleware responded
+app.use(function (req, res, next) {
+	console.log("error (404)");
+	return res.status(404).json({
+		message: "routes or method is incorrect",
+		error: "failed",
+        solution: "please check documentation",
 	});
 });
 
