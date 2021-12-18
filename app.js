@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+app.set('json spaces', 2);
 
 // load dotenv before database connection else MONGO_PROD_URL will be undefined
 dotenv.config();
@@ -36,7 +37,7 @@ app.use("/public", publicRoutes);
 app.use("/private", _authUser, privateRoutes);
 
 // welcome message for base route
-app.use("/", (req, res, next) => {
+app.get("/", (req, res, next) => {
 	return res.send({
 		message: "api is running",
 		mode: MODE,
@@ -44,11 +45,11 @@ app.use("/", (req, res, next) => {
 });
 
 // Assume 404 since no middleware responded
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 	return res.status(404).json({
 		message: "routes or method is incorrect",
 		error: "failed",
-        solution: "please check documentation",
+		solution: "please check documentation",
 	});
 });
 
