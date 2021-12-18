@@ -1,13 +1,9 @@
 // import comment schema
 const CommentSchema = require("../../models/comment.model");
 
-// importing helper functions
-const { isEmpty } = require("../../helper");
-
 const createController = (req, res) => {
-
-    // get the comment data from request
-    const { name, email, text } = req.body || {};
+	// get the comment data from request
+	const { name, email, text } = req.body || {};
 
 	// create a new comment
 	const comment = new CommentSchema({

@@ -37,7 +37,7 @@ const connect = async () => {
 			}`
 		);
 	} catch (error) {
-		console.log(`connection to MongoDB status: Failed [fatal error]`);
+		console.log("connection to MongoDB status: Failed [fatal error]");
 		process.exit();
 	}
 };

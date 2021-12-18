@@ -8,9 +8,9 @@ const listController = (req, res) => {
 
 	try {
 		CommentModel
-            .find({})
+			.find({})
 			.sort({ creation_time: "desc" })
-            .select("-__v -_id")
+			.select("-__v -_id")
 			.exec((err, data) => {
 				if (err) {
 					return res.status(401).json({
@@ -25,7 +25,7 @@ const listController = (req, res) => {
 					success: "success",
 					data: data,
 				});
-			})
+			});
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({

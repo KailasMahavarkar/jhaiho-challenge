@@ -13,7 +13,6 @@ const privateRoutes = require("./routes/private.routes");
 // import _auth middleware
 const _authUser = require("./middlewares/_auth.user");
 
-
 // setup json limit for api
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -26,15 +25,20 @@ app.use(
 // setup port for api
 const PORT = process.env.PORT || 80;
 
-
-
 app.use("/auth", authHandler);
 
-app.use('/', publicRoutes);
-app.use('/', _authUser, privateRoutes);
+// public routes
+app.use("/", publicRoutes);
 
-app.use("/", (req, res, next) => {
-	return res.send("Hello World");
+// private routes
+app.use("/", _authUser, privateRoutes);
+
+// welcome message for base route
+app.use("/", (res) => {
+	return res.send({
+		message: "api is running",
+		mode: MODE,
+	});
 });
 
 app.listen(PORT, async () => {

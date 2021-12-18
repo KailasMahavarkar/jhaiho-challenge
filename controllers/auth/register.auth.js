@@ -5,7 +5,7 @@ const UserModel = require("../../models/user.model");
 const { sha256, isEmpty } = require("../../helper");
 
 // register user
-const registerUser = async (req, res, next) => {
+const registerUser = async (req, res) => {
 	// get username and password from request body
 	const { username, password } = req.body || {};
 

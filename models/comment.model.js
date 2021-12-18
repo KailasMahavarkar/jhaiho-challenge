@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { v4 } = require('uuid');
+const { v4 } = require("uuid");
 const Schema = mongoose.Schema;
 
 
@@ -9,9 +9,9 @@ const commentSchema = new Schema({
 		auto: true,
 	},
 	id: {
-        type: String,
-        default: v4(),
-    },
+		type: String,
+		default: v4(),
+	},
 
 	name: {
 		type: String,
