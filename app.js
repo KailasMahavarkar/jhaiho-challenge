@@ -34,7 +34,7 @@ app.use("/public", publicRoutes);
 app.use("/private", _authUser, privateRoutes);
 
 // welcome message for base route
-app.use("/", (res) => {
+app.use("/", (req, res, next) => {
 	return res.send({
 		message: "api is running",
 		mode: MODE,
