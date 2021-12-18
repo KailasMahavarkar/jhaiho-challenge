@@ -45,7 +45,6 @@ app.use("/", (req, res, next) => {
 
 // Assume 404 since no middleware responded
 app.use(function (req, res, next) {
-	console.log("error (404)");
 	return res.status(404).json({
 		message: "routes or method is incorrect",
 		error: "failed",
